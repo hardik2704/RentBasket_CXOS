@@ -24,15 +24,31 @@ export default function LoginPage() {
         return () => clearInterval(interval);
     }, [step, timer]);
 
-    const handleSendOTP = (e: React.FormEvent) => {
+    const handleSendOTP = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (phone.length >= 10) {
+        if (phone.length === 10) {
             setIsLoading(true);
-            // Simulate API call
-            setTimeout(() => {
+            try {
+                const response = await fetch(`https://testapi.rentbasket.com/generate-otp-rb-auth?mobile=${phone}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'gyfgfvytfrdctyftyftfyiyftrdrtufc',
+                    },
+                });
+
+                if (response.ok) {
+                    setIsLoading(false);
+                    setStep('otp');
+                    setTimer(30);
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to send OTP');
+                }
+            } catch (error) {
+                console.error('OTP Send Error:', error);
                 setIsLoading(false);
-                setStep('otp');
-            }, 1000);
+                // In a real app, we'd show a toast here
+            }
         }
     };
 
