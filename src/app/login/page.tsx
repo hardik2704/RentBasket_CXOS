@@ -29,11 +29,8 @@ export default function LoginPage() {
         if (phone.length === 10) {
             setIsLoading(true);
             try {
-                const response = await fetch(`https://testapi.rentbasket.com/generate-otp-rb-auth?mobile=${phone}`, {
+                const response = await fetch(`/api/auth/generate-otp?mobile=${phone}`, {
                     method: 'GET',
-                    headers: {
-                        'Authorization': 'gyfgfvytfrdctyftyftfyiyftrdrtufc',
-                    },
                 });
 
                 if (response.ok) {
