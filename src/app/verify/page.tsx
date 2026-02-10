@@ -10,6 +10,7 @@ interface CustomerInfo {
     name?: string;
     email?: string;
     phone?: string;
+    profile_pic?: string;
     eligible: boolean;
     next_allowed_date?: string;
 }
@@ -35,9 +36,10 @@ export default function VerifyPage() {
                 // Mock verified customer
                 setCustomerInfo({
                     customer_id: token, // Use the token as ID for testing
-                    name: 'Valued Customer',
-                    email: 'customer@example.com',
+                    name: 'Hardik Kumar',
+                    email: 'hardik@rentbasket.com',
                     phone: '+91 98765 43210',
+                    profile_pic: 'https://ui-avatars.com/api/?name=Hardik+Kumar&background=d72f26&color=fff',
                     eligible: true,
                 });
                 setState('verified');
@@ -95,25 +97,7 @@ export default function VerifyPage() {
 
                     {state === 'verified' && customerInfo && (
                         <div className="fade-in">
-                            {/* Success Icon */}
-                            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[var(--success-bg)] flex items-center justify-center">
-                                <svg
-                                    className="w-10 h-10 text-[var(--success)]"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth={2}
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    />
-                                </svg>
-                            </div>
-
-                            {/* Badge */}
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--success-bg)] text-[#065f46] font-medium mb-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--success-bg)] text-[#065f46] font-medium mb-8">
                                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                     <path
                                         fillRule="evenodd"
@@ -124,20 +108,41 @@ export default function VerifyPage() {
                                 Verified customer
                             </div>
 
+                            {/* User Block */}
+                            <div className="mb-8 p-6 bg-white rounded-3xl shadow-lg border border-[var(--border-light)] text-left flex items-center gap-4">
+                                <div className="w-16 h-16 rounded-2xl overflow-hidden bg-[var(--rb-red-light)] flex-shrink-0">
+                                    {customerInfo.profile_pic ? (
+                                        <img src={customerInfo.profile_pic} alt={customerInfo.name} className="w-full h-full object-cover" />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center text-[var(--rb-red)] font-bold text-xl">
+                                            {customerInfo.name?.[0]}
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                    <h3 className="text-lg font-bold text-[var(--foreground)] truncate">
+                                        {customerInfo.name}
+                                    </h3>
+                                    <p className="text-sm text-[var(--foreground-secondary)] truncate">
+                                        {customerInfo.phone}
+                                    </p>
+                                    <p className="text-sm text-[var(--foreground-muted)] truncate">
+                                        {customerInfo.email}
+                                    </p>
+                                </div>
+                            </div>
+
                             <h2 className="text-2xl font-bold text-[var(--foreground)] mb-2">
-                                Welcome back{customerInfo.name ? `, ${customerInfo.name.split(' ')[0]}` : ''}!
+                                Welcome back!
                             </h2>
                             <p className="text-[var(--foreground-secondary)] mb-8">
-                                {customerInfo.email && (
-                                    <span className="block">{customerInfo.email}</span>
-                                )}
-                                We&apos;re excited to hear your feedback.
+                                We&apos;re excited to hear your feedback about our services.
                             </p>
 
-                            <button onClick={handleContinue} className="btn-primary text-lg">
+                            <button onClick={handleContinue} className="btn-primary text-lg w-full">
                                 Start Feedback
                                 <svg
-                                    className="w-5 h-5"
+                                    className="w-5 h-5 ml-2"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"

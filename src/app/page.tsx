@@ -46,7 +46,7 @@ export default function WelcomePage() {
           </p>
 
           {/* CTA Button */}
-          <Link href="/verify" className="btn-primary text-lg">
+          <Link href="/login" className="btn-primary text-lg">
             Continue
             <svg
               className="w-5 h-5"
