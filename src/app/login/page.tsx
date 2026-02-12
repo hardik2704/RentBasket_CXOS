@@ -49,17 +49,41 @@ export default function LoginPage() {
         }
     };
 
-    const handleVerifyOTP = (e?: React.FormEvent) => {
+    const handleVerifyOTP = async (e?: React.FormEvent) => {
         if (e) e.preventDefault();
         const otpValue = otp.join('');
         if (otpValue.length === 4) {
             setIsLoading(true);
-            // Simulate backend validation
-            setTimeout(() => {
+            try {
+                // Call RentBasket Auth API
+                const url = `https://testapi.rentbasket.com/rb-auth?mobile=${phone}&otp=${otpValue}`;
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.status === 'Success') {
+                    if (data.isRegistered && data.user) {
+                        // Store user data in session for verification page
+                        sessionStorage.setItem('temp_cxos_user', JSON.stringify(data.user));
+                        router.push('/verify?verified=true');
+                    } else {
+                        // Not a registered customer or verify failed
+                        router.push('/verify?verified=false');
+                    }
+                } else {
+                    throw new Error(data.message || 'Invalid OTP');
+                }
+            } catch (error) {
+                console.error('Auth Error:', error);
+                alert('Verification failed. Please check your OTP and try again.');
+            } finally {
                 setIsLoading(false);
-                // Redirect to verification loader with a mock token
-                router.push(`/verify?token=cust_${phone}`);
-            }, 1500);
+            }
         }
     };
 

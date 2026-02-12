@@ -4,83 +4,97 @@ import Link from 'next/link';
 
 export default function WelcomePage() {
   return (
-    <main className="min-h-screen flex flex-col bg-gradient-to-b from-white to-[var(--background-secondary)]">
-      {/* Header */}
-      <header className="pt-8 px-6 text-center">
-        <div className="inline-flex items-center gap-2 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-[var(--rb-red)] flex items-center justify-center">
-            <span className="text-white font-bold text-lg">R</span>
+    <div className="landing-page min-h-screen flex items-center justify-center p-5 font-sans">
+      <main className="w-full max-w-[420px]">
+        {/* Header */}
+        <div className="flex items-center justify-center gap-2.5 mb-[18px]">
+          <div className="w-[42px] h-[42px] rounded-xl bg-[rgba(215,47,38,.10)] border border-[rgba(215,47,38,.18)] grid place-items-center text-[var(--rb-red)] font-extrabold">
+            RB
           </div>
-          <span className="text-xl font-semibold text-[var(--foreground)]">RentBasket</span>
+          <div className="font-extrabold tracking-[-0.02em] text-[20px]">
+            RentBasket
+          </div>
         </div>
-      </header>
 
-      {/* Hero Section */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6 pb-12">
-        <div className="max-w-md w-full text-center fade-in">
-          {/* Decorative Icon */}
-          <div className="mb-8">
-            <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-[var(--rb-red-light)] to-white flex items-center justify-center shadow-lg">
-              <svg
-                className="w-12 h-12 text-[var(--rb-red)]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={1.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
-                />
-              </svg>
-            </div>
+        {/* Main Panel */}
+        <section className="bg-white border border-[rgba(15,23,42,.06)] rounded-[24px] p-[22px] shadow-[0_10px_30px_rgba(2,6,23,.06)]">
+
+          {/* Hero Icon */}
+          <div className="landing-icon w-[64px] h-[64px] rounded-full grid place-items-center mx-auto mb-[14px]">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M7 8h10M7 12h7" stroke="#d72f26" strokeWidth="2" strokeLinecap="round" />
+              <path d="M21 12c0 4.418-4.03 8-9 8a10.8 10.8 0 0 1-3.8-.68L3 20l1.2-3.4A7.5 7.5 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8Z"
+                stroke="#d72f26" strokeWidth="2" strokeLinejoin="round" />
+            </svg>
           </div>
 
-          {/* Title & Subtitle */}
-          <h1 className="text-3xl font-bold text-[var(--foreground)] mb-4">
+          {/* Hero Text */}
+          <h1 className="m-0 text-center text-[28px] leading-[1.15] tracking-[-0.03em] font-bold">
             Help us improve your comfort ✨
           </h1>
-          <p className="text-lg text-[var(--foreground-secondary)] mb-8 leading-relaxed">
+          <p className="my-[10px] mb-[18px] text-center text-[var(--foreground-secondary)] text-[15px] leading-[1.5]">
             It takes 30 seconds. Your feedback goes directly to our team.
           </p>
 
-          {/* CTA Button */}
-          <Link href="/login" className="btn-primary text-lg">
-            Continue
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-              />
-            </svg>
+          {/* Steps */}
+          <ul className="grid gap-[10px] m-0 mb-[18px] p-0 list-none">
+            <li className="landing-step flex gap-[10px] items-start p-[10px_12px] rounded-[16px]">
+              <div className="landing-badge w-[26px] h-[26px] rounded-[8px] grid place-items-center font-extrabold flex-none mt-[1px] text-[14px]">
+                1
+              </div>
+              <div>
+                <b className="block text-[14px] mb-[2px]">Rate your experience</b>
+                <span className="block text-[var(--foreground-secondary)] text-[13px] leading-[1.35]">Quick 1–5 rating to understand how we did.</span>
+              </div>
+            </li>
+            <li className="landing-step flex gap-[10px] items-start p-[10px_12px] rounded-[16px]">
+              <div className="landing-badge w-[26px] h-[26px] rounded-[8px] grid place-items-center font-extrabold flex-none mt-[1px] text-[14px]">
+                2
+              </div>
+              <div>
+                <b className="block text-[14px] mb-[2px]">Tell us what happened</b>
+                <span className="block text-[var(--foreground-secondary)] text-[13px] leading-[1.35]">Share what went well and what we should fix.</span>
+              </div>
+            </li>
+            <li className="landing-step flex gap-[10px] items-start p-[10px_12px] rounded-[16px]">
+              <div className="landing-badge w-[26px] h-[26px] rounded-[8px] grid place-items-center font-extrabold flex-none mt-[1px] text-[14px]">
+                3
+              </div>
+              <div>
+                <b className="block text-[14px] mb-[2px]">Customer benefit</b>
+                <span className="block text-[var(--foreground-secondary)] text-[13px] leading-[1.35]">If you&apos;re a RentBasket customer, we&apos;ll verify on the next step.</span>
+              </div>
+            </li>
+          </ul>
+
+          {/* CTA */}
+          <Link href="/login" className="landing-btn w-full h-[54px] rounded-full text-white text-[16px] font-extrabold tracking-[-0.01em] flex items-center justify-center gap-[10px] cursor-pointer outline-none transition-all no-underline">
+            Continue <span aria-hidden="true">→</span>
           </Link>
-
-          {/* Note */}
-          <p className="mt-6 text-sm text-[var(--foreground-muted)]">
-            If you&apos;re a RentBasket customer, you&apos;ll be asked to verify.
+          <p className="mt-[10px] text-center text-[var(--foreground-secondary)] text-[12.5px]">
+            No login needed unless you&apos;re a customer.
           </p>
-        </div>
-      </div>
 
-      {/* Footer */}
-      <footer className="py-6 px-6 text-center border-t border-[var(--border-light)]">
-        <div className="flex justify-center gap-6 text-sm text-[var(--foreground-secondary)]">
-          <a href="#" className="hover:text-[var(--rb-red)] transition-colors">
-            Privacy
-          </a>
-          <a href="#" className="hover:text-[var(--rb-red)] transition-colors">
-            Terms
-          </a>
-        </div>
-      </footer>
-    </main>
+          {/* Privacy */}
+          <div className="landing-privacy mt-[14px] p-[12px] rounded-[16px]">
+            <b className="block text-[13px]">🔒 Privacy & fairness</b>
+            <p className="m-[6px_0_0] text-[var(--foreground-secondary)] text-[12.5px] leading-[1.45]">
+              We never post anything without your permission. Non-customers won&apos;t be redirected to Google Reviews.
+            </p>
+          </div>
+
+          {/* Footer Links */}
+          <div className="mt-[14px] flex justify-between gap-[12px]">
+            <Link href="/support" className="text-[var(--foreground-secondary)] no-underline text-[12.5px] hover:text-[var(--foreground)]">
+              Talk to support
+            </Link>
+            <Link href="/terms" className="text-[var(--foreground-secondary)] no-underline text-[12.5px] hover:text-[var(--foreground)]">
+              Terms
+            </Link>
+          </div>
+
+        </section>
+      </main>
+    </div>
   );
 }

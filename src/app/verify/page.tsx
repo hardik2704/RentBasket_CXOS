@@ -23,28 +23,52 @@ export default function VerifyPage() {
     const [guestPhone, setGuestPhone] = useState('');
 
     useEffect(() => {
-        // Simulate verification check
-        // In production, this would check for a token in URL params or cookies
         const checkVerification = async () => {
+            console.log('VerifyPage mounted. Checking verification...');
+            // Add a small delay for better UX (loading state)
             await new Promise((resolve) => setTimeout(resolve, 1500));
 
-            // For demo: Check if there's a token in URL params
             const urlParams = new URLSearchParams(window.location.search);
+            const verified = urlParams.get('verified');
             const token = urlParams.get('token');
 
-            if (token) {
-                // Mock verified customer
+            console.log('Params:', { verified, token });
+
+            if (verified === 'true') {
+                try {
+                    const storedUser = sessionStorage.getItem('temp_cxos_user');
+                    console.log('Stored user:', storedUser);
+                    if (storedUser) {
+                        const user = JSON.parse(storedUser);
+                        setCustomerInfo({
+                            customer_id: user.customer_mobile_number || 'unknown',
+                            name: user.customer_name,
+                            email: user.customer_email,
+                            phone: user.customer_mobile_number,
+                            profile_pic: user.customer_profile_pic,
+                            eligible: true,
+                        });
+                        setState('verified');
+                    } else {
+                        // Fallback if session data missing but verified=true
+                        setState('non-customer');
+                    }
+                } catch (e) {
+                    console.error('Error parsing user data', e);
+                    setState('non-customer');
+                }
+            } else if (token) {
+                // Existing mock logic for backward compatibility
                 setCustomerInfo({
-                    customer_id: token, // Use the token as ID for testing
-                    name: 'Hardik Kumar',
+                    customer_id: token,
+                    name: 'Hardik Mahendru', // Updated mock name to match example
                     email: 'hardik@rentbasket.com',
-                    phone: '+91 98765 43210',
-                    profile_pic: 'https://ui-avatars.com/api/?name=Hardik+Kumar&background=d72f26&color=fff',
+                    phone: '+91 99584 48249',
+                    profile_pic: 'https://ui-avatars.com/api/?name=Hardik+Mahendru&background=d72f26&color=fff',
                     eligible: true,
                 });
                 setState('verified');
             } else {
-                // Non-customer flow
                 setState('non-customer');
             }
         };
@@ -105,7 +129,7 @@ export default function VerifyPage() {
                                         clipRule="evenodd"
                                     />
                                 </svg>
-                                Verified customer
+                                Verified Customer (API)
                             </div>
 
                             {/* User Block */}
