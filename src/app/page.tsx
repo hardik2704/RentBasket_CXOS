@@ -56,15 +56,6 @@ export default function WelcomePage() {
                 <span className="block text-[var(--foreground-secondary)] text-[13px] leading-[1.35]">Share what went well and what we should fix.</span>
               </div>
             </li>
-            <li className="landing-step flex gap-[10px] items-start p-[10px_12px] rounded-[16px]">
-              <div className="landing-badge w-[26px] h-[26px] rounded-[8px] grid place-items-center font-extrabold flex-none mt-[1px] text-[14px]">
-                3
-              </div>
-              <div>
-                <b className="block text-[14px] mb-[2px]">Customer benefit</b>
-                <span className="block text-[var(--foreground-secondary)] text-[13px] leading-[1.35]">If you&apos;re a RentBasket customer, we&apos;ll verify on the next step.</span>
-              </div>
-            </li>
           </ul>
 
           {/* CTA */}
@@ -74,14 +65,6 @@ export default function WelcomePage() {
           <p className="mt-[10px] text-center text-[var(--foreground-secondary)] text-[12.5px]">
             No login needed unless you&apos;re a customer.
           </p>
-
-          {/* Privacy */}
-          <div className="landing-privacy mt-[14px] p-[12px] rounded-[16px]">
-            <b className="block text-[13px]">🔒 Privacy & fairness</b>
-            <p className="m-[6px_0_0] text-[var(--foreground-secondary)] text-[12.5px] leading-[1.45]">
-              We never post anything without your permission. Non-customers won&apos;t be redirected to Google Reviews.
-            </p>
-          </div>
 
           {/* Footer Links */}
           <div className="mt-[14px] flex justify-between gap-[12px]">

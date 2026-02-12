@@ -233,7 +233,12 @@ export default function LoginPage() {
                                     </p>
                                 ) : (
                                     <button
-                                        onClick={() => setTimer(30)}
+                                        onClick={() => {
+                                            // Reuse handleSendOTP logic but we need to pass a mock event or refactor handleSendOTP
+                                            // Easier to just call the API here or refactor handleSendOTP to be callable without event
+                                            const resendEvent = { preventDefault: () => { } } as React.FormEvent;
+                                            handleSendOTP(resendEvent);
+                                        }}
                                         className="text-sm text-[var(--rb-red)] font-bold hover:underline"
                                     >
                                         Resend OTP
