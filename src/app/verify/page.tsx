@@ -24,7 +24,7 @@ export default function VerifyPage() {
 
     useEffect(() => {
         const checkVerification = async () => {
-            console.log('VerifyPage mounted. Checking verification...');
+
             // Add a small delay for better UX (loading state)
             await new Promise((resolve) => setTimeout(resolve, 1500));
 
@@ -32,12 +32,12 @@ export default function VerifyPage() {
             const verified = urlParams.get('verified');
             const token = urlParams.get('token');
 
-            console.log('Params:', { verified, token });
+
 
             if (verified === 'true') {
                 try {
                     const storedUser = sessionStorage.getItem('temp_cxos_user');
-                    console.log('Stored user:', storedUser);
+
                     if (storedUser) {
                         const user = JSON.parse(storedUser);
                         setCustomerInfo({
@@ -129,7 +129,7 @@ export default function VerifyPage() {
                                         clipRule="evenodd"
                                     />
                                 </svg>
-                                Verified Customer (API)
+                                Verified customer
                             </div>
 
                             {/* User Block */}
