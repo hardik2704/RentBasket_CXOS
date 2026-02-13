@@ -55,13 +55,10 @@ export default function LoginPage() {
         if (otpValue.length === 4) {
             setIsLoading(true);
             try {
-                // Call RentBasket Auth API
-                const url = `https://testapi.rentbasket.com/rb-auth?mobile=${phone}&otp=${otpValue}`;
+                // Call auth API via server-side proxy to avoid CORS
+                const url = `/api/auth/verify-otp?mobile=${phone}&otp=${otpValue}`;
                 const response = await fetch(url, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
                 });
 
                 const data = await response.json();
