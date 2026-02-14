@@ -8,9 +8,7 @@ export default function WelcomePage() {
       <main className="w-full max-w-[420px]">
         {/* Header */}
         <div className="flex items-center justify-center gap-2.5 mb-[18px]">
-          <div className="w-[42px] h-[42px] rounded-xl bg-[rgba(215,47,38,.10)] border border-[rgba(215,47,38,.18)] grid place-items-center text-[var(--rb-red)] font-extrabold">
-            RB
-          </div>
+          <img src="/RentBasket-Logo.png" alt="RentBasket" className="w-[42px] h-[42px] rounded-xl object-contain" />
           <div className="font-extrabold tracking-[-0.02em] text-[20px]">
             RentBasket
           </div>

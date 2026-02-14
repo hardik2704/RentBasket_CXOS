@@ -97,9 +97,7 @@ export default function VerifyPage() {
             {/* Header */}
             <header className="pt-8 px-6 text-center">
                 <div className="inline-flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--rb-red)] flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">R</span>
-                    </div>
+                    <img src="/RentBasket-Logo.png" alt="RentBasket" className="w-10 h-10 rounded-xl object-contain" />
                     <span className="text-xl font-semibold text-[var(--foreground)]">RentBasket</span>
                 </div>
             </header>
@@ -136,7 +134,16 @@ export default function VerifyPage() {
                             <div className="mb-8 p-6 bg-white rounded-3xl shadow-lg border border-[var(--border-light)] text-left flex items-center gap-4">
                                 <div className="w-16 h-16 rounded-2xl overflow-hidden bg-[var(--rb-red-light)] flex-shrink-0">
                                     {customerInfo.profile_pic ? (
-                                        <img src={customerInfo.profile_pic} alt={customerInfo.name} className="w-full h-full object-cover" />
+                                        <img
+                                            src={customerInfo.profile_pic}
+                                            alt={customerInfo.name}
+                                            className="w-full h-full object-cover"
+                                            onError={(e) => {
+                                                // Fallback to initials avatar if profile pic URL is broken
+                                                const name = customerInfo.name || 'User';
+                                                (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=d72f26&color=fff&size=128`;
+                                            }}
+                                        />
                                     ) : (
                                         <div className="w-full h-full flex items-center justify-center text-[var(--rb-red)] font-bold text-xl">
                                             {customerInfo.name?.[0]}

@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   title: "RentBasket Feedback | Share Your Experience",
   description: "Help us improve your comfort by sharing your RentBasket experience. Your feedback goes directly to our team.",
   keywords: ["RentBasket", "feedback", "review", "customer experience"],
+  icons: {
+    icon: "/RentBasket-Logo.png",
+    apple: "/RentBasket-Logo.png",
+  },
   openGraph: {
     title: "RentBasket Feedback",
     description: "Share your RentBasket experience",

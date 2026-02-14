@@ -116,9 +116,7 @@ export default function LoginPage() {
             {/* Header */}
             <header className="pt-8 px-6 text-center">
                 <Link href="/" className="inline-flex items-center gap-2 mb-2">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--rb-red)] flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">R</span>
-                    </div>
+                    <img src="/RentBasket-Logo.png" alt="RentBasket" className="w-10 h-10 rounded-xl object-contain" />
                     <span className="text-xl font-semibold text-[var(--foreground)]">RentBasket</span>
                 </Link>
             </header>
