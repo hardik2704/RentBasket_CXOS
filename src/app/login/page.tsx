@@ -33,24 +33,34 @@ export default function LoginPage() {
                     method: 'GET',
                 });
 
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    let errorMsg = 'Failed to send OTP';
+                    try {
+                        const errorData = JSON.parse(errorText);
+                        errorMsg = errorData.message || errorData.error || errorMsg;
+                    } catch {
+                        // response wasn't JSON
+                    }
+                    throw new Error(errorMsg);
+                }
+
                 const data = await response.json();
 
-                if (response.ok) {
-                    // Check if user is a registered customer
-                    if (data.isRegistered === false) {
-                        // Non-customer: skip OTP, redirect to verify as non-customer
-                        setIsLoading(false);
-                        router.push('/verify?verified=false');
-                        return;
-                    }
+                // Check if user is a registered customer
+                if (data.isRegistered === false) {
+                    // Non-customer: skip OTP, redirect to verify as non-customer
                     setIsLoading(false);
-                    setStep('otp');
-                    setTimer(30);
-                } else {
-                    throw new Error(data.message || 'Failed to send OTP');
+                    router.push('/verify?verified=false');
+                    return;
                 }
-            } catch (error) {
+                setIsLoading(false);
+                setStep('otp');
+                setTimer(30);
+            } catch (error: unknown) {
                 console.error('OTP Send Error:', error);
+                const msg = error instanceof Error ? error.message : 'Failed to send OTP';
+                alert(msg);
                 setIsLoading(false);
             }
         }

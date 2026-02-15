@@ -66,10 +66,10 @@ export default function WelcomePage() {
 
           {/* Footer Links */}
           <div className="mt-[14px] flex justify-between gap-[12px]">
-            <Link href="/support" className="text-[var(--foreground-secondary)] no-underline text-[12.5px] hover:text-[var(--foreground)]">
+            <Link href="#" className="text-[var(--foreground-secondary)] no-underline text-[12.5px] hover:text-[var(--foreground)]">
               Talk to support
             </Link>
-            <Link href="/terms" className="text-[var(--foreground-secondary)] no-underline text-[12.5px] hover:text-[var(--foreground)]">
+            <Link href="#" className="text-[var(--foreground-secondary)] no-underline text-[12.5px] hover:text-[var(--foreground)]">
               Terms
             </Link>
           </div>
