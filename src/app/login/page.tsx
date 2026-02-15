@@ -33,18 +33,25 @@ export default function LoginPage() {
                     method: 'GET',
                 });
 
+                const data = await response.json();
+
                 if (response.ok) {
+                    // Check if user is a registered customer
+                    if (data.isRegistered === false) {
+                        // Non-customer: skip OTP, redirect to verify as non-customer
+                        setIsLoading(false);
+                        router.push('/verify?verified=false');
+                        return;
+                    }
                     setIsLoading(false);
                     setStep('otp');
                     setTimer(30);
                 } else {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || 'Failed to send OTP');
+                    throw new Error(data.message || 'Failed to send OTP');
                 }
             } catch (error) {
                 console.error('OTP Send Error:', error);
                 setIsLoading(false);
-                // In a real app, we'd show a toast here
             }
         }
     };
