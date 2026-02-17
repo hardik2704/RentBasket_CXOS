@@ -49,7 +49,21 @@ export default function LoginPage() {
 
                 // Check if user is a registered customer
                 // API returns: { status, responseCode, data: { IsRegistered: true/false } }
-                if (data.data?.IsRegistered === false) {
+                // OR for non-registered: { status, responseCode, data: { messageDescription: "Invalid user." } }
+                const responseData = data.data || {};
+                const isRegistered = responseData.IsRegistered;
+                const messageDescription = responseData.messageDescription;
+
+                // Check for non-registered user conditions:
+                // 1. Explicit IsRegistered = false (boolean or string)
+                // 2. "Invalid user." message from API
+                if (
+                    isRegistered === false ||
+                    String(isRegistered).toLowerCase() === 'false' ||
+                    messageDescription === 'Invalid user.' ||
+                    messageDescription === 'Invalid user'
+                ) {
+                    console.log('User not registered, redirecting to verify=false');
                     // Non-customer: skip OTP, redirect to verify as non-customer
                     setIsLoading(false);
                     router.push('/verify?verified=false');
