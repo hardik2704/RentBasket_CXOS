@@ -247,9 +247,13 @@ export default function VerifyPage() {
                                     <input
                                         type="tel"
                                         value={guestPhone}
-                                        onChange={(e) => setGuestPhone(e.target.value)}
+                                        onChange={(e) => {
+                                            const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                                            setGuestPhone(val);
+                                        }}
+                                        maxLength={10}
                                         className="input-field"
-                                        placeholder="+91 98765 43210"
+                                        placeholder="Enter 10-digit number"
                                     />
                                 </div>
                             </div>

@@ -34,22 +34,7 @@ export default function ThankYouPage() {
             {/* Content */}
             <div className="flex-1 flex flex-col items-center justify-center px-6 pb-12">
                 <div className="max-w-md w-full text-center fade-in">
-                    {/* Icon */}
-                    <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-[var(--info-bg)] flex items-center justify-center">
-                        <svg
-                            className="w-12 h-12 text-[var(--info)]"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={1.5}
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M9 12.75L11.25 15 15 9.75M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
-                            />
-                        </svg>
-                    </div>
+
 
                     {/* Title */}
                     <h1 className="text-3xl font-bold text-[var(--foreground)] mb-3">
