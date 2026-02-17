@@ -48,7 +48,8 @@ export default function LoginPage() {
                 const data = await response.json();
 
                 // Check if user is a registered customer
-                if (data.isRegistered === false) {
+                // API returns: { status, responseCode, data: { IsRegistered: true/false } }
+                if (data.data?.IsRegistered === false) {
                     // Non-customer: skip OTP, redirect to verify as non-customer
                     setIsLoading(false);
                     router.push('/verify?verified=false');

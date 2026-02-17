@@ -17,18 +17,10 @@ export default function WelcomePage() {
         {/* Main Panel */}
         <section className="bg-white border border-[rgba(15,23,42,.06)] rounded-[24px] p-[22px] shadow-[0_10px_30px_rgba(2,6,23,.06)]">
 
-          {/* Hero Icon */}
-          <div className="landing-icon w-[64px] h-[64px] rounded-full grid place-items-center mx-auto mb-[14px]">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-              <path d="M7 8h10M7 12h7" stroke="#d72f26" strokeWidth="2" strokeLinecap="round" />
-              <path d="M21 12c0 4.418-4.03 8-9 8a10.8 10.8 0 0 1-3.8-.68L3 20l1.2-3.4A7.5 7.5 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8Z"
-                stroke="#d72f26" strokeWidth="2" strokeLinejoin="round" />
-            </svg>
-          </div>
 
           {/* Hero Text */}
           <h1 className="m-0 text-center text-[28px] leading-[1.15] tracking-[-0.03em] font-bold">
-            Help us improve your comfort ✨
+            Help us improve your comfort
           </h1>
           <p className="my-[10px] mb-[18px] text-center text-[var(--foreground-secondary)] text-[15px] leading-[1.5]">
             It takes 30 seconds. Your feedback goes directly to our team.
