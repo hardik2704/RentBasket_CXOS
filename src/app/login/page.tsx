@@ -95,6 +95,13 @@ export default function LoginPage() {
 
                 const data = await response.json();
 
+                // Check for specific "Invalid OTP" message even if status is Success
+                if (data.data?.messageDescription === 'Invalid OTP') {
+                    alert('Invalid OTP. Kindly Retry!');
+                    setIsLoading(false);
+                    return;
+                }
+
                 if (response.ok && data.status === 'Success') {
                     if (data.isRegistered && data.user) {
                         // Store user data in session for verification page
